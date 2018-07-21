@@ -8,8 +8,7 @@ using eat2fitDesktop.Models;
 using eat2fitDesktop.Services;
 using System.Diagnostics;
 using System.Windows.Input;
-
-
+using eat2fitDesktop.Pages;
 
 namespace eat2fitDesktop
 {
@@ -31,6 +30,10 @@ namespace eat2fitDesktop
 		async void OnNewCustomerClick(object sender, EventArgs e)
 		{
 			await Navigation.PushAsync(new AddCostumerPage());
+		}
+		async void OnAddMealClick(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new AddMealPage());
 		}
 		protected override void OnAppearing()
 		{
