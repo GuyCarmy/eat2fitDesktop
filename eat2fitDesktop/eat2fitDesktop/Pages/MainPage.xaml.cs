@@ -29,15 +29,19 @@ namespace eat2fitDesktop
 		{
 			await Navigation.PushAsync(new AddCostumerPage());
 		}
-		public MainPage()
+		protected override void OnAppearing()
 		{
-			InitializeComponent();
+			base.OnAppearing();
 			getCustomers();
-			ActualIntakeList.ItemsSource = customers;
-			foreach (Customer c in customersTests)
+			foreach (Customer c in customers)
 			{
 				CustomerPicker.Items.Add(c.name);
 			}
+		}
+		public MainPage()
+		{
+			InitializeComponent();
+		
 
 
 
