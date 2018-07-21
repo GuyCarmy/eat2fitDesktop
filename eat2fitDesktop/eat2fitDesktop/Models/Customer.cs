@@ -9,11 +9,26 @@ namespace eat2fitDesktop.Models
     class Customer
     {
 		[BsonId(IdGenerator = typeof(CombGuidGenerator))]
-		public Guid id { get; set; }
-		[BsonElement("name")]
-		public string name { get; set; }
-		[BsonElement("age")]
-		public int age { get; set; }
-
+		public Guid Id { get; set; }
+		[BsonElement("Name")]
+		public string Name { get; set; }
+		[BsonElement("Age")]
+		public int Age { get; set; }
+		[BsonElement("SuggestedDeit")]
+		public List<Meal> SuggestedDeit { get; }
+		[BsonElement("EatedDeit")]
+		public List<Meal> EatedDiet { get; }
+		public void AddMeal(string diet, Meal meal)
+		{
+			switch (diet)
+			{
+				case "Suggested":
+					SuggestedDeit.Add(meal);
+					break;
+				case "Eated":
+					EatedDiet.Add(meal);
+					break;
+			}
+		}
     }
 }

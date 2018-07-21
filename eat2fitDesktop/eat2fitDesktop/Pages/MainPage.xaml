@@ -8,7 +8,7 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="Customer" HorizontalOptions="StartAndExpand"/>
             <Picker x:Name="CustomerPicker" WidthRequest="800"/>
-            <Button Text="New Customer" Clicked="onNewCustomerClick"/>
+            <Button Text="New Customer" Clicked="OnNewCustomerClick"/>
         </StackLayout>
 
         <Grid Padding="20" RowSpacing="20" ColumnSpacing="20">

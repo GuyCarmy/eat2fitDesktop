@@ -12,8 +12,8 @@
                 <Label Text="age"/>
                 <Entry x:Name="age" Text="Enter Here" WidthRequest="500"/>
             </StackLayout>
-           
-            <Button Text="Add" Clicked="onAddCustomerClicked"/>
+
+            <Button Text="Add" Clicked="OnAddCustomerClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

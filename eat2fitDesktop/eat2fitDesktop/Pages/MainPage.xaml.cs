@@ -17,26 +17,26 @@ namespace eat2fitDesktop
 	{
 		MongoService mongoService = new MongoService();
 		List<Customer> customers = new List<Customer>();
-		List<Customer> customersTests = new List<Customer>();
 
-		async void getCustomers()
+		async void GetCustomers()
 		{
-			Customer c = new Customer();
 			customers = await mongoService.GetAllCustomers();
+			CustomerPicker.Items.Clear();
+			foreach (Customer c in customers)
+			{
+				CustomerPicker.Items.Add(c.Name);
+			}
 
 		}
-		async void onNewCustomerClick(object sender, EventArgs e)
+		async void OnNewCustomerClick(object sender, EventArgs e)
 		{
 			await Navigation.PushAsync(new AddCostumerPage());
 		}
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			getCustomers();
-			foreach (Customer c in customers)
-			{
-				CustomerPicker.Items.Add(c.name);
-			}
+			GetCustomers();
+
 		}
 		public MainPage()
 		{

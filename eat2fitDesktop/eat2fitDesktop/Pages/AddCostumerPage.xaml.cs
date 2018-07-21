@@ -14,11 +14,13 @@ namespace eat2fitDesktop
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddCostumerPage : ContentPage
 	{
-		async void onAddCustomerClicked(object sender, EventArgs e)
+		async void OnAddCustomerClicked(object sender, EventArgs e)
 		{
-			Customer customer = new Customer();
-			customer.name = name.Text;
-			customer.age = Convert.ToInt32( age.Text);
+			Customer customer = new Customer
+			{
+				Name = name.Text,
+				Age = Convert.ToInt32(age.Text)
+			};
 			var mongoService = new MongoService();
 			await mongoService.CreateCustomer(customer);
 			await Navigation.PopAsync();

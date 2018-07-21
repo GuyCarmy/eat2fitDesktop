@@ -49,7 +49,7 @@ namespace eat2fitDesktop.Services
 			try
 			{
 				var allCustomers = await CustomersCollection
-					.Find(x => x.age>0)
+					.Find(new BsonDocument())
 					.ToListAsync();
 				System.Diagnostics.Debug.WriteLine("got data: "+allCustomers.Count);
 				return allCustomers;
