@@ -7,7 +7,7 @@
     <StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label Text="Customer" HorizontalOptions="StartAndExpand"/>
-            <Picker WidthRequest="800"/>
+            <Picker x:Name="CustomerPicker" WidthRequest="800"/>
             <Button Text="New Customer" Clicked="onNewCustomerClick"/>
         </StackLayout>
 
@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
             <Label Text="Actual Costumer Intake" Grid.Row="0" Grid.Column="0"/>
             <Label Text="Suggested Diet For Customer" Grid.Row="0" Grid.Column="1"/>
-            <ListView x:Name="ActualIntakeList" Grid.Row="1" Grid.Column="0"/>
+            <ListView x:Name="ActualIntakeList" Grid.Row="1" Grid.Column="0" />
             <ListView x:Name="SuggestedDietLise" Grid.Row="1" Grid.Column="1"/>
             <Button Text="Add Meal" Grid.Row="2" Grid.Column="1"/>
 

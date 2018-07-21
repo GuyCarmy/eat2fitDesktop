@@ -49,15 +49,16 @@ namespace eat2fitDesktop.Services
 			try
 			{
 				var allCustomers = await CustomersCollection
-					.Find(new BsonDocument())
+					.Find(x => x.age>0)
 					.ToListAsync();
-
+				System.Diagnostics.Debug.WriteLine("got data: "+allCustomers.Count);
 				return allCustomers;
 			}
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex.Message);
 			}
+
 			return null;
 		}
 		/*
