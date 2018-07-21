@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eat2fitDesktop"
+             x:Class="eat2fitDesktop.MainPage">
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Customer" HorizontalOptions="StartAndExpand"/>
+            <Picker WidthRequest="800"/>
+            <Button Text="New Customer" Clicked="onNewCustomerClick"/>
+        </StackLayout>
+
+        <Grid Padding="20" RowSpacing="20" ColumnSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Actual Costumer Intake" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="Suggested Diet For Customer" Grid.Row="0" Grid.Column="1"/>
+            <ListView x:Name="ActualIntakeList" Grid.Row="1" Grid.Column="0"/>
+            <ListView x:Name="SuggestedDietLise" Grid.Row="1" Grid.Column="1"/>
+            <Button Text="Add Meal" Grid.Row="2" Grid.Column="1"/>
+
+        </Grid>
+
+    </StackLayout>
+
+</ContentPage>

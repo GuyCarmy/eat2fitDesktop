@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eat2fitDesktop.AddCostumerPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="name"/>
+                <Entry Text="Enter Here"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="name"/>
+                <Entry Text="Enter Here"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="name"/>
+                <Entry Text="Enter Here"/>
+            </StackLayout>
+            <Button Text="Add" Clicked="onAddCustomerClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
