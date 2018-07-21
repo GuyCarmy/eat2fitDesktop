@@ -6,16 +6,13 @@
         <StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="name"/>
-                <Entry Text="Enter Here"/>
+                <Entry x:Name="name" Text="Enter Here" WidthRequest="500"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="name"/>
-                <Entry Text="Enter Here"/>
+                <Label Text="age"/>
+                <Entry x:Name="age" Text="Enter Here" WidthRequest="500"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="name"/>
-                <Entry Text="Enter Here"/>
-            </StackLayout>
+           
             <Button Text="Add" Clicked="onAddCustomerClicked"/>
         </StackLayout>
     </ContentPage.Content>
