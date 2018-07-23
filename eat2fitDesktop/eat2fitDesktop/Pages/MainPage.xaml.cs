@@ -25,6 +25,7 @@ namespace eat2fitDesktop
 			{
 				CustomerPicker.Items.Add(c.Name);
 			}
+			ActualIntakeList.ItemsSource = customers;
 
 		}
 		async void OnNewCustomerClick(object sender, EventArgs e)

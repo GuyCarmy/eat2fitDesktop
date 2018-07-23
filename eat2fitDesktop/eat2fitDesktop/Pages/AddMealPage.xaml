@@ -31,7 +31,12 @@
                 <ListView x:Name="MealList" Grid.Column="2" Grid.Row="2"/>
                 <Button Text="->" Grid.Column="1" Grid.Row="2" VerticalOptions="Center"/>
 
-            </Grid> 
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="New Food" HorizontalOptions="Start" Clicked="OnNewFoodClicked"/>
+                <Button Text="Create Meal" HorizontalOptions="End" Clicked="OnCreateMealClicked"/>
+
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
