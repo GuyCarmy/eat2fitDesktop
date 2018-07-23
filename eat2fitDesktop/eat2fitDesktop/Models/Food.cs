@@ -14,5 +14,9 @@ namespace eat2fitDesktop.Models
 		public string Name { get; set; }
 		[BsonElement("Calories")]
 		public int Calories { get; set; }
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

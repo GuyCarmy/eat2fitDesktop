@@ -23,9 +23,8 @@ namespace eat2fitDesktop
 			CustomerPicker.Items.Clear();
 			foreach (Customer c in customers)
 			{
-				CustomerPicker.Items.Add(c.Name);
+				CustomerPicker.Items.Add(c.ToString());
 			}
-			ActualIntakeList.ItemsSource = customers;
 
 		}
 		async void OnNewCustomerClick(object sender, EventArgs e)
@@ -45,7 +44,7 @@ namespace eat2fitDesktop
 		public MainPage()
 		{
 			InitializeComponent();
-		
+			
 
 
 

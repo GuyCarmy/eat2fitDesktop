@@ -13,7 +13,6 @@ namespace eat2fitDesktop.Services
     {
 		string ConnectionString = "mongodb://eat2fit:bp95DGUi0CGOfXd7P4ghOhSwCYCOfsG64OJRzFRCzbb14JzZtRVR2leOapVSXPbom9sSNyfzphQDsuLBKKkGUQ==@eat2fit.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 		string dbName = "eat2fit";
-		string collectionName = "Customers";
 
 		IMongoCollection<Customer> customersCollection;
 		IMongoCollection<Customer> CustomersCollection
@@ -37,12 +36,39 @@ namespace eat2fitDesktop.Services
 
 					// This will create or get the collection
 					var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
-					customersCollection = db.GetCollection<Customer>(collectionName, collectionSettings);
+					customersCollection = db.GetCollection<Customer>("Customers", collectionSettings);
 				}
 				return customersCollection;
 			}
 		}
 
+		IMongoCollection<Food> foodsCollection;
+		IMongoCollection<Food> FoodsCollection
+		{
+			get
+			{
+				if (foodsCollection == null)
+				{
+					MongoClientSettings settings = MongoClientSettings.FromUrl(
+					  new MongoUrl(ConnectionString)
+					);
+
+					settings.SslSettings =
+						new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+					// Initialize the client
+					var mongoClient = new MongoClient(settings);
+
+					// This will create or get the database
+					var db = mongoClient.GetDatabase(dbName);
+
+					// This will create or get the collection
+					var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
+					foodsCollection = db.GetCollection<Food>("Foods", collectionSettings);
+				}
+				return foodsCollection;
+			}
+		}
 
 		public async Task<List<Customer>> GetAllCustomers()
 		{
@@ -51,7 +77,6 @@ namespace eat2fitDesktop.Services
 				var allCustomers = await CustomersCollection
 					.Find(new BsonDocument())
 					.ToListAsync();
-				System.Diagnostics.Debug.WriteLine("got data: "+allCustomers.Count);
 				return allCustomers;
 			}
 			catch (Exception ex)
@@ -60,6 +85,30 @@ namespace eat2fitDesktop.Services
 			}
 
 			return null;
+		}
+		public async Task<List<Food>> GetAllFoods()
+		{
+			try
+			{
+				var allFoods = await FoodsCollection
+					.Find(new BsonDocument())
+					.ToListAsync();
+				return allFoods;
+			}
+			catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
+			}
+
+			return null;
+		}
+		public async Task CreateCustomer(Customer customer)
+		{
+			await CustomersCollection.InsertOneAsync(customer);
+		}
+		public async Task CreateFood(Food food)
+		{
+			await FoodsCollection.InsertOneAsync(food);
 		}
 		/*
 		public async Task<List<MyTask>> GetIncompleteTasks()
@@ -92,10 +141,7 @@ namespace eat2fitDesktop.Services
 			return tasks;
 		}
 		*/
-		public async Task CreateCustomer(Customer customer)
-		{
-			await CustomersCollection.InsertOneAsync(customer);
-		}
+
 		/*
 		public async Task UpdateTask(MyTask task)
 		{
