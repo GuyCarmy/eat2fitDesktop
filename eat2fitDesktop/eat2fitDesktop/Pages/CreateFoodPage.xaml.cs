@@ -15,13 +15,28 @@ namespace eat2fitDesktop.Pages
 	{
 		async void OnCreateFoodClicked(object sender, EventArgs e)
 		{
-			Food food = new Food
+			int cal = -1;
+			try
 			{
-				Name = name.Text,
-				Calories = Convert.ToInt32(calories.Text)
-			};
+				cal = Convert.ToInt32(calories.Text);
+			}
+			catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
+			}
+			Food food = new Food();
+			food.Name = name.Text;
+			food.Calories = cal;
 			var mongoService = new MongoService();
-			await mongoService.CreateFood(food);
+
+			try
+			{
+				await mongoService.CreateFood(food);
+			}
+			catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
+			}
 			await Navigation.PopAsync();
 		}
 		public CreateFoodPage ()

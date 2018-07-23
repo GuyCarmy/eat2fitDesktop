@@ -27,8 +27,20 @@
                     <Label Text="Search" />
                     <Entry HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
                 </StackLayout>
-                <ListView x:Name="FoodsList" Grid.Column="0" Grid.Row="2"/>
-                <ListView x:Name="MealList" Grid.Column="2" Grid.Row="2"/>
+                <ListView x:Name="FoodsList" Grid.Column="0" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView x:Name="MealList" Grid.Column="2" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <Button Text="->" Grid.Column="1" Grid.Row="2" VerticalOptions="Center"/>
 
             </Grid>

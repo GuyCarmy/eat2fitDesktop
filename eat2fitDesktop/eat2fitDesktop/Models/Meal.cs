@@ -11,9 +11,9 @@ namespace eat2fitDesktop.Models
 		[BsonId(IdGenerator = typeof(CombGuidGenerator))]
 		public Guid Id { get; set; }
 		[BsonElement("Time")]
-		public int Time; 
+		public int Time { get; set; } 
 		// time is kept in minutes sense midnight. either TimeSpan or DateTime fits right for this usage, so I went for the simplest solution.
-
+		
 		public List<Food> Foods;
 
     }

@@ -12,13 +12,15 @@ namespace eat2fitDesktop.Models
 		public Guid Id { get; set; }
 		[BsonElement("Name")]
 		public string Name { get; set; }
+		[BsonElement("Details")]
+		public string Details;
 		[BsonElement("Age")]
 		public int Age { get; set; }
 		[BsonElement("SuggestedDeit")]
 		public List<Meal> SuggestedDeit { get; }
 		[BsonElement("EatedDeit")]
 		public List<Meal> EatedDiet { get; }
-		public string aa = "aaa";
+
 		public void AddMeal(string diet, Meal meal)
 		{
 			switch (diet)
@@ -31,16 +33,5 @@ namespace eat2fitDesktop.Models
 					break;
 			}
 		}
-		public override string ToString()
-		{
-			return Name;
-		}
-		[BsonElement("Details")]
-		public string Details { get; set; }
-		public Customer()
-		{
-			Details = "Age: " + Age + " ID: ";
-		}
-		
 	}
 }

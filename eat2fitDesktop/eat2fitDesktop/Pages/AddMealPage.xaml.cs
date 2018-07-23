@@ -26,10 +26,8 @@ namespace eat2fitDesktop.Pages
 		}
 		async void UpdateFoodsList()
 		{
-			System.Diagnostics.Debug.WriteLine("before");
 
 			foods = await mongoService.GetAllFoods();
-			
 			FoodsList.ItemsSource = foods;
 		
 		}

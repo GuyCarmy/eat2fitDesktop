@@ -23,7 +23,7 @@ namespace eat2fitDesktop
 			CustomerPicker.Items.Clear();
 			foreach (Customer c in customers)
 			{
-				CustomerPicker.Items.Add(c.ToString());
+				CustomerPicker.Items.Add(c.Name);
 			}
 
 		}
