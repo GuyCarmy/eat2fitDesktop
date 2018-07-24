@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eat2fitDesktop.Pages.AddMealPage">
+             x:Class="eat2fitDesktop.Views.AddMealPage">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal" Spacing="30" Padding="30">
@@ -41,7 +41,12 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Text="->" Grid.Column="1" Grid.Row="2" VerticalOptions="Center"/>
+                <StackLayout  Grid.Column="1" Grid.Row="2">
+                    <Label Text="Amount"/>
+                    <Entry x:Name="amountEntry"/>
+                    <Button Text="->" VerticalOptions="Center"/>
+
+                </StackLayout>
 
             </Grid>
             <StackLayout Orientation="Horizontal">

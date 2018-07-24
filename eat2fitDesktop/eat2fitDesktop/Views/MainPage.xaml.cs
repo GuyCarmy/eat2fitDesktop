@@ -8,12 +8,14 @@ using eat2fitDesktop.Models;
 using eat2fitDesktop.Services;
 using System.Diagnostics;
 using System.Windows.Input;
-using eat2fitDesktop.Pages;
+using eat2fitDesktop.Views;
+using eat2fitDesktop.ViewModels;
 
 namespace eat2fitDesktop
 {
 	public partial class MainPage : ContentPage
 	{
+		AddCustomerVM addCustomerVM = new AddCustomerVM();
 		MongoService mongoService = new MongoService();
 		List<Customer> customers = new List<Customer>();
 
@@ -29,11 +31,17 @@ namespace eat2fitDesktop
 		}
 		async void OnNewCustomerClick(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new AddCostumerPage());
+			AddCustomerPage p = new AddCustomerPage();
+			p.BindingContext = addCustomerVM;
+			await Navigation.PushAsync(p);
 		}
 		async void OnAddMealClick(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new AddMealPage());
+			if (CustomerPicker.SelectedItem != null)
+				//set CustomerPcicker selected item somewhere
+				await Navigation.PushAsync(new AddMealPage());
+			else
+				await DisplayAlert("No Customer", "Please select a customer first", "OK");
 		}
 		protected override void OnAppearing()
 		{

@@ -8,7 +8,7 @@ using eat2fitDesktop.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace eat2fitDesktop.Pages
+namespace eat2fitDesktop.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CreateFoodPage : ContentPage

@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eat2fitDesktop.AddCostumerPage">
+             x:Class="eat2fitDesktop.Views.CreateFoodPage">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="name"/>
+                <Label Text="Food Name"/>
                 <Entry x:Name="name" Text="Enter Here" WidthRequest="500"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="age"/>
-                <Entry x:Name="age" Text="Enter Here" WidthRequest="500"/>
+                <Label Text="Calories"/>
+                <Entry x:Name="calories" Text="Enter Here" WidthRequest="500"/>
             </StackLayout>
 
-            <Button Text="Add" Clicked="OnAddCustomerClicked" HorizontalOptions="Center"/>
+            <Button Text="Add" Clicked="OnCreateFoodClicked" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
