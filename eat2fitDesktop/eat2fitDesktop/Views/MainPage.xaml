@@ -1,40 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:eat2fitDesktop"
-             x:Class="eat2fitDesktop.MainPage">
+             xmlns:local="clr-namespace:eat2fitDesktop.Views"
+             x:Class="eat2fitDesktop.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="30" Padding="30">
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Customer" HorizontalOptions="StartAndExpand"/>
+                <Picker SelectedItem="{Binding SelectedCustomer}" WidthRequest="800"/>
+                <Button Text="New Customer" Command="OnNewCustomerClickedCommand"/>
+            </StackLayout>
 
-    <StackLayout>
-        <StackLayout Orientation="Horizontal" Spacing="30" Padding="30">
-            <Label Text="Customer" HorizontalOptions="StartAndExpand"/>
-            <Picker x:Name="CustomerPicker" WidthRequest="800"/>
-            <Button Text="New Customer" Clicked="OnNewCustomerClick"/>
+            <Grid Padding="20" RowSpacing="20" ColumnSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Actual Costumer Intake" Grid.Row="0" Grid.Column="0"/>
+                <Label Text="Suggested Diet For Customer" Grid.Row="0" Grid.Column="1"/>
+                <ListView ItemsSource="{Binding eatedDiet}" Grid.Row="1" Grid.Column="0" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView ItemsSource="{Binding SuggestedDiet}" Grid.Row="1" Grid.Column="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Add Meal" Grid.Row="2" Grid.Column="1" Command="OnAddMealClickedCommand"/>
+
+            </Grid>
+
         </StackLayout>
-
-        <Grid Padding="20" RowSpacing="20" ColumnSpacing="20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Text="Actual Costumer Intake" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="Suggested Diet For Customer" Grid.Row="0" Grid.Column="1"/>
-            <ListView x:Name="ActualIntakeList" Grid.Row="1" Grid.Column="0" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <ListView x:Name="SuggestedDietList" Grid.Row="1" Grid.Column="1"/>
-            <Button Text="Add Meal" Grid.Row="2" Grid.Column="1" Clicked="OnAddMealClick"/>
-
-        </Grid>
-
-    </StackLayout>
-
+    </ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using eat2fitDesktop.Views;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eat2fitDesktop

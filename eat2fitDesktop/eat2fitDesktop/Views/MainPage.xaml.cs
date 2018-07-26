@@ -10,57 +10,25 @@ using System.Windows.Input;
 using eat2fitDesktop.Views;
 using eat2fitDesktop.ViewModels;
 using System.Collections.ObjectModel;
+using Xamarin.Forms.Xaml;
 
-namespace eat2fitDesktop
+namespace eat2fitDesktop.Views
 {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MainPage : ContentPage
 	{
-		MongoService mongoService = new MongoService();
-		List<Customer> customers = new List<Customer>();
-		AddMealVM addMealVM;
-		AddMealPage addMealPage;
-		async void GetCustomers()
-		{
-			try
-			{
-				customers = await mongoService.GetAllCustomers();
-				CustomerPicker.ItemsSource = new ObservableCollection<Customer>(customers);
-			}
-			catch (Exception ex)
-			{
-				System.Diagnostics.Debug.WriteLine(ex.Message);
-			}
-
-		}
-		async void OnNewCustomerClick(object sender, EventArgs e)
-		{
-			await Navigation.PushAsync(new AddCustomerPage());
-		}
-		async void OnAddMealClick(object sender, EventArgs e)
-		{
-			if (CustomerPicker.SelectedItem != null)
-			{
-
-				addMealVM = new AddMealVM();
-				addMealVM.SetCustomer(CustomerPicker.SelectedItem);
-				addMealPage = new AddMealPage
-				{
-					BindingContext = addMealVM
-				};
-				await Navigation.PushAsync(addMealPage);
-			}else
-				await DisplayAlert("No Customer", "Please select a customer first", "OK");
-		}
+		
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			GetCustomers();
+			var vm = BindingContext as MainPageVM;
+			vm.GetCustomers();
 
 		}
 		public MainPage()
 		{
 			InitializeComponent();
-			
+			BindingContext = new MainPageVM();
 
 
 
