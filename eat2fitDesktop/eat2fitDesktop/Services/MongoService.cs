@@ -11,7 +11,7 @@ namespace eat2fitDesktop.Services
 {
     class MongoService
     {
-		string ConnectionString = "mongodb://eat2fit:bp95DGUi0CGOfXd7P4ghOhSwCYCOfsG64OJRzFRCzbb14JzZtRVR2leOapVSXPbom9sSNyfzphQDsuLBKKkGUQ==@eat2fit.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+		string ConnectionString = "that my buisness";
 		string dbName = "eat2fit";
 
 		IMongoCollection<Customer> customersCollection;
