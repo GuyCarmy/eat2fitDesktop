@@ -11,8 +11,9 @@ namespace eat2fitDesktop.Services
 {
     class MongoService
     {
-		string ConnectionString = "mongodb://eat2fit:bp95DGUi0CGOfXd7P4ghOhSwCYCOfsG64OJRzFRCzbb14JzZtRVR2leOapVSXPbom9sSNyfzphQDsuLBKKkGUQ==@eat2fit.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 		string dbName = "eat2fit";
+
+		//ToDo: remove duplication of the setup of settings and db for each collection.
 
 		IMongoCollection<Customer> customersCollection;
 		IMongoCollection<Customer> CustomersCollection
@@ -22,7 +23,7 @@ namespace eat2fitDesktop.Services
 				if (customersCollection == null)
 				{
 					MongoClientSettings settings = MongoClientSettings.FromUrl(
-					  new MongoUrl(ConnectionString)
+					  new MongoUrl(Config.ConnectionString)
 					);
 
 					settings.SslSettings =
@@ -50,7 +51,7 @@ namespace eat2fitDesktop.Services
 				if (foodsCollection == null)
 				{
 					MongoClientSettings settings = MongoClientSettings.FromUrl(
-					  new MongoUrl(ConnectionString)
+					  new MongoUrl(Config.ConnectionString)
 					);
 
 					settings.SslSettings =
