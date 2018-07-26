@@ -61,7 +61,7 @@ namespace eat2fitDesktop.ViewModels
 		public Command OnNewFoodClickedCommand { get; }
 		async void OnNewFoodClicked()
 		{
-			await Application.Current.MainPage.Navigation.PushAsync(new CreateFoodPage());
+			await Application.Current.MainPage.Navigation.PushAsync(new AddFoodPage());
 		}
 
 		public Command OnCreateMealClickedCommand { get; }

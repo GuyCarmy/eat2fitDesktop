@@ -9,17 +9,12 @@ using Xamarin.Forms;
 
 namespace eat2fitDesktop.ViewModels
 {
-    public class AddCustomerVM : INotifyPropertyChanged
+    public class AddCustomerVM
     {
 		Customer customer = new Customer();
 		public string Name { get; set; }
 		public string Age { get; set; }
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		void OnPropertyChanged([CallerMemberName] string name = "")
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-		}
+		
 
 		public Command OnAddCustomerClickedCommand { get; }
 		async void OnAddCustomerClicked()

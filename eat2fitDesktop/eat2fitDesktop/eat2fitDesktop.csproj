@@ -13,6 +13,9 @@
     <Compile Update="Views\AddCustomerPage.xaml.cs">
       <DependentUpon>AddCustomerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\AddFoodPage.xaml.cs">
+      <DependentUpon>AddFoodPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +25,7 @@
     <EmbeddedResource Update="Views\AddMealPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\CreateFoodPage.xaml">
+    <EmbeddedResource Update="Views\AddFoodPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
