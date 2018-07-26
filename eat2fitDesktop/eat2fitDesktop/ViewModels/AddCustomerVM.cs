@@ -12,7 +12,6 @@ namespace eat2fitDesktop.ViewModels
     public class AddCustomerVM : INotifyPropertyChanged
     {
 		Customer customer = new Customer();
-		public Command OnAddCustomerClickedCommand { get; }
 		public string Name { get; set; }
 		public string Age { get; set; }
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -21,6 +20,8 @@ namespace eat2fitDesktop.ViewModels
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 		}
+
+		public Command OnAddCustomerClickedCommand { get; }
 		async void OnAddCustomerClicked()
 		{
 			customer.Name = Name;
@@ -34,9 +35,9 @@ namespace eat2fitDesktop.ViewModels
 			}
 			var mongoService = new MongoService();
 			await mongoService.CreateCustomer(customer);
-			//TODO: pop the page when finish
-			//await Navigation.PopAsync();
+			await Application.Current.MainPage.Navigation.PopAsync();
 		}
+
 		public AddCustomerVM()
 		{
 			OnAddCustomerClickedCommand = new Command(OnAddCustomerClicked);
@@ -46,4 +47,3 @@ namespace eat2fitDesktop.ViewModels
 
 //TODO: Add ViewModels to all pages and bind all
 //example: https://github.com/jamesmontemagno/TheXamarinShow/blob/master/2016-10-05%20Episode%205%20MVVM/ContactsApp/ContactsApp/ViewModels/AddContactViewModel.cs
-//TODO: 

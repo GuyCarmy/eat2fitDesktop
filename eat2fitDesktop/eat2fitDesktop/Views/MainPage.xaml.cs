@@ -6,41 +6,49 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using eat2fitDesktop.Models;
 using eat2fitDesktop.Services;
-using System.Diagnostics;
 using System.Windows.Input;
 using eat2fitDesktop.Views;
 using eat2fitDesktop.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace eat2fitDesktop
 {
 	public partial class MainPage : ContentPage
 	{
-		AddCustomerVM addCustomerVM = new AddCustomerVM();
 		MongoService mongoService = new MongoService();
 		List<Customer> customers = new List<Customer>();
-
+		AddMealVM addMealVM;
+		AddMealPage addMealPage;
 		async void GetCustomers()
 		{
-			customers = await mongoService.GetAllCustomers();
-			CustomerPicker.Items.Clear();
-			foreach (Customer c in customers)
+			try
 			{
-				CustomerPicker.Items.Add(c.Name);
+				customers = await mongoService.GetAllCustomers();
+				CustomerPicker.ItemsSource = new ObservableCollection<Customer>(customers);
+			}
+			catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
 			}
 
 		}
 		async void OnNewCustomerClick(object sender, EventArgs e)
 		{
-			AddCustomerPage p = new AddCustomerPage();
-			p.BindingContext = addCustomerVM;
-			await Navigation.PushAsync(p);
+			await Navigation.PushAsync(new AddCustomerPage());
 		}
 		async void OnAddMealClick(object sender, EventArgs e)
 		{
 			if (CustomerPicker.SelectedItem != null)
-				//set CustomerPcicker selected item somewhere
-				await Navigation.PushAsync(new AddMealPage());
-			else
+			{
+
+				addMealVM = new AddMealVM();
+				addMealVM.SetCustomer(CustomerPicker.SelectedItem);
+				addMealPage = new AddMealPage
+				{
+					BindingContext = addMealVM
+				};
+				await Navigation.PushAsync(addMealPage);
+			}else
 				await DisplayAlert("No Customer", "Please select a customer first", "OK");
 		}
 		protected override void OnAppearing()

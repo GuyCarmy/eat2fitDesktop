@@ -8,6 +8,7 @@ using eat2fitDesktop.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using eat2fitDesktop.ViewModels;
 
 namespace eat2fitDesktop
 {
@@ -18,6 +19,7 @@ namespace eat2fitDesktop
 		public AddCustomerPage ()
 		{
 			InitializeComponent ();
+			BindingContext = new AddCustomerVM();
 		}
 
 	}

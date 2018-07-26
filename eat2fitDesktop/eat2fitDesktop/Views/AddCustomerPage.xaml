@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eat2fitDesktop.AddCustomerPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Spacing="30" Padding="30">
             <StackLayout Orientation="Horizontal">
-                <Label Text="name"/>
+                <Label Text="Name"/>
                 <Entry Text="{Binding Name}" WidthRequest="500"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="age"/>
+                <Label Text="Age"/>
                 <Entry  Text="{Binding Age}" WidthRequest="500"/>
             </StackLayout>
 

@@ -110,44 +110,13 @@ namespace eat2fitDesktop.Services
 		{
 			await FoodsCollection.InsertOneAsync(food);
 		}
+
+		
+		public async Task EditCustomer(Customer customer)
+		{
+			await CustomersCollection.ReplaceOneAsync(t => t.Id.Equals(customer.Id), customer);
+		}
 		/*
-		public async Task<List<MyTask>> GetIncompleteTasks()
-		{
-			var incompleteTasks = await TasksCollection
-				.Find(mt => mt.Complete == false)
-				.ToListAsync();
-
-			return incompleteTasks;
-		}
-
-		public async Task<MyTask> GetTaskById(Guid taskId)
-		{
-			var singleTask = await TasksCollection
-				.Find(f => f.Id.Equals(taskId))
-				.FirstOrDefaultAsync();
-
-			return singleTask;
-		}
-
-
-		public async Task<List<MyTask>> GetIncompleteTasksDueBefore(DateTime date)
-		{
-			var tasks = await TasksCollection
-							.AsQueryable()
-							.Where(t => t.Complete == false)
-							.Where(t => t.DueDate < date)
-							.ToListAsync();
-
-			return tasks;
-		}
-		*/
-
-		/*
-		public async Task UpdateTask(MyTask task)
-		{
-			await TasksCollection.ReplaceOneAsync(t => t.Id.Equals(task.Id), task);
-		}
-
 		public async Task DeleteTask(MyTask task)
 		{
 			await TasksCollection.DeleteOneAsync(t => t.Id.Equals(task.Id));

@@ -6,7 +6,7 @@ using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace eat2fitDesktop.Models
 {
-    class Food
+    public class Food
     {
 		[BsonId(IdGenerator = typeof(CombGuidGenerator))]
 		public Guid Id { get; set; }
@@ -54,7 +54,6 @@ namespace eat2fitDesktop.Models
 			}
 			set
 			{
-				System.Diagnostics.Debug.WriteLine("got in to the setter of calories");
 				if (value > 0 && value <= 900)
 				{ 
 					calories = value;

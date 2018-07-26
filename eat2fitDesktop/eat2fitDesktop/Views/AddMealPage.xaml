@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eat2fitDesktop.Views.AddMealPage">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal" Spacing="30" Padding="30">
+        <StackLayout Spacing="30" Padding="30">
+            <StackLayout Orientation="Horizontal" >
                 <Label Text="Time: "/>
-                <Entry Text="HH"/>
+                <Entry Text="{Binding Hrs}"/>
                 <Label Text=":"/>
-                <Entry Text="MM"/>
+                <Entry Text="{Binding Mins}"/>
             </StackLayout>
             <Grid Padding="20" RowSpacing="20" ColumnSpacing="20">
                 <Grid.RowDefinitions>
@@ -25,33 +25,33 @@
                 <Label Text="In This Meal:" Grid.Column="2" Grid.Row="0"/>
                 <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
                     <Label Text="Search" />
-                    <Entry HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
+                    <Entry Text="{Binding Search}" HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
                 </StackLayout>
-                <ListView x:Name="FoodsList" Grid.Column="0" Grid.Row="2">
+                <ListView ItemsSource="{Binding Foods}" SelectedItem="{Binding SelectedFood}" Grid.Column="0" Grid.Row="2">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <ListView x:Name="MealList" Grid.Column="2" Grid.Row="2">
+                <ListView ItemsSource="{Binding ThisMealFoods}" Grid.Column="2" Grid.Row="2">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>
+                            <TextCell Text="{Binding Name}" Detail="{Binding DetailsForMeal}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
                 <StackLayout  Grid.Column="1" Grid.Row="2">
                     <Label Text="Amount"/>
-                    <Entry x:Name="amountEntry"/>
-                    <Button Text="->" VerticalOptions="Center"/>
+                    <Entry Text="{Binding Amount}"/>
+                    <Button Text="->" VerticalOptions="Center" Command="{Binding OnAddFoodToMealClickedCommand}"/>
 
                 </StackLayout>
 
             </Grid>
             <StackLayout Orientation="Horizontal">
-                <Button Text="New Food" HorizontalOptions="Start" Clicked="OnNewFoodClicked"/>
-                <Button Text="Create Meal" HorizontalOptions="End" Clicked="OnCreateMealClicked"/>
+                <Button Text="New Food" HorizontalOptions="Start" Command="{Binding OnNewFoodClickedCommand}"/>
+                <Button Text="Create Meal" HorizontalOptions="End" Command="{Binding OnCreateMealClickedCommand}"/>
 
             </StackLayout>
         </StackLayout>
