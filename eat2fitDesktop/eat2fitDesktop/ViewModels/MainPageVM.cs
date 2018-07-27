@@ -1,5 +1,5 @@
-﻿using eat2fitDesktop.Models;
-using eat2fitDesktop.Services;
+﻿using eat2fit.Models;
+using eat2fit.Services;
 using eat2fitDesktop.Views;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace eat2fitDesktop.ViewModels
 {
     public class MainPageVM : INotifyPropertyChanged
 	{
+		//todo: bug- if you add meal for a customer, when it goes back to the main page it unset the selected customer.
 		private Customer selectedCustomer;
 		public object SelectedCustomer
 		{

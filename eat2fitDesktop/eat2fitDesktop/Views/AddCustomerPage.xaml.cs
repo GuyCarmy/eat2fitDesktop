@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using eat2fitDesktop.Services;
-using eat2fitDesktop.Models;
+using eat2fit.Services;
+using eat2fit.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

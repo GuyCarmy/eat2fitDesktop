@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eat2fitDesktop.UWP", "eat2fitDesktop\eat2fitDesktop.UWP\eat2fitDesktop.UWP.csproj", "{A3CDD6AD-F074-4765-A5A1-DAD6803E5E12}"
+	ProjectSection(ProjectDependencies) = postProject
+		{42999A9B-5405-40F7-BB34-461522241334} = {42999A9B-5405-40F7-BB34-461522241334}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eat2fitDesktop", "eat2fitDesktop\eat2fitDesktop\eat2fitDesktop.csproj", "{7E8052D2-A7C3-4A4B-A307-491F05098596}"
+	ProjectSection(ProjectDependencies) = postProject
+		{42999A9B-5405-40F7-BB34-461522241334} = {42999A9B-5405-40F7-BB34-461522241334}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eat2fit", "..\eat2fit\eat2fit\eat2fit.csproj", "{42999A9B-5405-40F7-BB34-461522241334}"
 EndProject

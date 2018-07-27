@@ -1,5 +1,5 @@
-﻿using eat2fitDesktop.Models;
-using eat2fitDesktop.Services;
+﻿using eat2fit.Models;
+using eat2fit.Services;
 using eat2fitDesktop.Views;
 using System;
 using System.Collections.Generic;
