@@ -28,7 +28,7 @@ namespace eat2fitDesktop.Models
 		[BsonElement("Time")]
 		public int Time
 		{
-			get { return time; }
+			get { return time; }xamar
 			set
 			{
 				time = value;
