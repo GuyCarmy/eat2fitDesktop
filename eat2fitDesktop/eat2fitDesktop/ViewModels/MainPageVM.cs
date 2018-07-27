@@ -13,7 +13,7 @@ namespace eat2fitDesktop.ViewModels
 {
     public class MainPageVM : INotifyPropertyChanged
 	{
-		//todo: bug- if you add meal for a customer, when it goes back to the main page it unset the selected customer.
+		//todo: bug- if you add meal for a customer, when it goes back to the main page it unset the selected customer. also, if customer is not selected, make sure view lists are cleared.
 		private Customer selectedCustomer;
 		public object SelectedCustomer
 		{

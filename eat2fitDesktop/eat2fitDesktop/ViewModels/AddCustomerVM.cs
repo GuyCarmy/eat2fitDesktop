@@ -15,12 +15,14 @@ namespace eat2fitDesktop.ViewModels
 		Customer customer = new Customer();
 		public string Name { get; set; }
 		public string Age { get; set; }
+		public string Password { get; set; }
 		
 
 		public Command OnAddCustomerClickedCommand { get; }
 		async void OnAddCustomerClicked()
 		{
 			customer.Name = Name;
+			customer.Password = Password;
 			try
 			{
 				customer.Age = Convert.ToInt32(Age);

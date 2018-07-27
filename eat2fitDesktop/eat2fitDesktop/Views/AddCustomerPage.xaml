@@ -5,11 +5,15 @@
     <ContentPage.Content>
         <StackLayout Spacing="30" Padding="30">
             <StackLayout Orientation="Horizontal">
-                <Label Text="Name"/>
+                <Label Text="Name: "/>
                 <Entry Text="{Binding Name}" WidthRequest="500"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Age"/>
+                <Label Text="Password: "/>
+                <Entry Text="{Binding Password}" WidthRequest="500"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Age: "/>
                 <Entry  Text="{Binding Age}" WidthRequest="500"/>
             </StackLayout>
 
