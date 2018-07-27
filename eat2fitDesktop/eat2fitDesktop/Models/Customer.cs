@@ -13,14 +13,15 @@ namespace eat2fitDesktop.Models
 		private string name;
 		[BsonElement("Name")]
 		public string Name { get { return name; } set { name = value; } }
+		private string details;
 		[BsonElement("Details")]
-		public string Details;
+		public string Details { get => details; }
 		private int age;
 		[BsonElement("Age")]
 		public int Age { get { return age; } set
 			{
 				age = value;
-				Details = "Age: " + value;
+				details = "Age: " + value;
 			}
 		}
 		private List<Meal> suggestedDiet;

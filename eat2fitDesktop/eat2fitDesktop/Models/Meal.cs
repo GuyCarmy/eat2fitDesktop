@@ -8,9 +8,14 @@ namespace eat2fitDesktop.Models
 {
     public class Meal
     {
+		private string details;
 		[BsonElement("Details")]
-		public string Details;
-	
+		public string Details { get => details; }
+
+		private string name;
+		[BsonElement("Name")]
+		public string Name { get => name; }
+
 		[BsonElement("Foods")]
 		public List<Food> Foods { get; set; }
 
@@ -34,7 +39,8 @@ namespace eat2fitDesktop.Models
 				foreach (Food f in Foods)
 					cal += f.Calories*f.Amount;
 				cal /= 100;
-				Details = "Meal Time: " + mealHr + ":" + mealMin + ", Meal Calories: " + cal;
+				name = "Meal Time: " + mealHr + ":" + mealMin;
+				details = "Meal Calories: " + cal; //todo will include protein, carbs and fat for the meal 
 			}
 		}
 	}

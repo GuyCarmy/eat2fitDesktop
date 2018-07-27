@@ -48,7 +48,7 @@ namespace eat2fitDesktop.ViewModels
 			}
 			else
 			{
-				System.Diagnostics.Debug.WriteLine("c is not Customer");
+				System.Diagnostics.Debug.WriteLine("c is not Customer"); //todo raise exception
 			}
 		}
 
@@ -100,14 +100,10 @@ namespace eat2fitDesktop.ViewModels
 		{
 			int amount = 0;
 			Food food = null;
-			if (SelectedFood == null)
+			if (SelectedFood == null || Amount == null)
 			{
-				System.Diagnostics.Debug.WriteLine("food was not selected");
+				System.Diagnostics.Debug.WriteLine("food was not selected or amount was not inserted");
 				//TODO: diplay alert: Please select food first
-			}if(Amount == null)
-			{
-				System.Diagnostics.Debug.WriteLine("amount was not selected");
-				//TODO: diplay alert: Please insert amount first
 			}
 			else
 			{

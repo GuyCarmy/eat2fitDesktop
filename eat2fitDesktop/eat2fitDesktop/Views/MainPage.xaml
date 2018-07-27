@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Text="Actual Costumer Intake" Grid.Row="0" Grid.Column="0"/>
                 <Label Text="Suggested Diet For Customer" Grid.Row="0" Grid.Column="1"/>
-                <ListView ItemsSource="{Binding eatedDiet}" Grid.Row="1" Grid.Column="0" >
+                <ListView ItemsSource="{Binding EatedDiet}" Grid.Row="1" Grid.Column="0" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}" Detail="{Binding Details}"/>

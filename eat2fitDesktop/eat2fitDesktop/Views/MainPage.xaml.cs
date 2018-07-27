@@ -21,7 +21,7 @@ namespace eat2fitDesktop.Views
 		{
 			base.OnAppearing();
 			var vm = BindingContext as MainPageVM;
-			vm.GetCustomers();
+			vm.RefreshMainPage();
 
 		}
 		public MainPage()

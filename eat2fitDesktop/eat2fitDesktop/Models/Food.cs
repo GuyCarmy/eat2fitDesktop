@@ -27,7 +27,7 @@ namespace eat2fitDesktop.Models
 			}
 		}
 
-		private string details="";
+		private string details;
 		[BsonElement("Details")]
 		public string Details {
 			get
@@ -35,7 +35,7 @@ namespace eat2fitDesktop.Models
 				return details;
 			}
 		}
-		private string detailsForMeal="";
+		private string detailsForMeal;
 		[BsonElement("DetailsForMeal")]
 		public string DetailsForMeal
 		{
@@ -57,7 +57,7 @@ namespace eat2fitDesktop.Models
 				if (value > 0 && value <= 900)
 				{ 
 					calories = value;
-					details += "Calories: " + value;
+					details = "Calories: " + value;
 				}
 			} 
 		}
@@ -71,11 +71,13 @@ namespace eat2fitDesktop.Models
 			}
 			set
 			{
-				if (value > 0 && value <= 50)
+				if (value >= 0 && value <= 5000)
 				{
 					amount = value;
 					detailsForMeal = details+" Amount: " + value;
 				}
+				else {
+					System.Diagnostics.Debug.WriteLine("Wrong Food Amount"); } //todo raise exception
 			}
 		}
 

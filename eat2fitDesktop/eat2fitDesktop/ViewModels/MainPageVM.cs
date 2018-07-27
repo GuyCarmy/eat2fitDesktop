@@ -13,7 +13,27 @@ namespace eat2fitDesktop.ViewModels
 {
     public class MainPageVM : INotifyPropertyChanged
 	{
-		object SelectedCustomer { get; set; }
+		private Customer selectedCustomer;
+		public object SelectedCustomer
+		{
+			get
+			{
+				return selectedCustomer;
+			}
+			set
+			{
+				if (value is Customer)
+				{
+					selectedCustomer = value as Customer;
+					CustomerChanged();
+				}
+				else
+				{
+					System.Diagnostics.Debug.Write("value is not Customer, it is: "); //todo raise exception
+				}
+			}
+		}
+
 		MongoService mongoService = new MongoService();
 		private ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
 		public ObservableCollection<Customer> Customers
@@ -54,7 +74,7 @@ namespace eat2fitDesktop.ViewModels
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 		}
 
-		public async void GetCustomers()
+		public async void RefreshMainPage()
 		{
 			try
 			{
@@ -65,6 +85,27 @@ namespace eat2fitDesktop.ViewModels
 				System.Diagnostics.Debug.WriteLine(ex.Message);
 			}
 
+		}
+
+		void CustomerChanged()
+		{
+			System.Diagnostics.Debug.WriteLine("customer changed"); //todo delete
+			/*List<Meal> test = new List<Meal>();
+			test.Add(new Meal() { Time = 50 });
+			test.Add(new Meal() { Time = 70 });
+			SuggestedDiet = new ObservableCollection<Meal>(test);*/
+			try
+			{
+				SuggestedDiet = new ObservableCollection<Meal>(selectedCustomer.SuggestedDiet);
+			}
+			catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
+			}
+			foreach(Meal m in SuggestedDiet)
+			{
+				System.Diagnostics.Debug.WriteLine("m is " + m.Details);
+			}
 		}
 
 		public Command OnNewCustomerClickedCommand { get; }
