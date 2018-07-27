@@ -14,7 +14,6 @@ using Xamarin.Forms.Xaml;
 
 namespace eat2fitDesktop.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MainPage : ContentPage
 	{
 		
@@ -29,12 +28,9 @@ namespace eat2fitDesktop.Views
 		{
 			InitializeComponent();
 			BindingContext = new MainPageVM();
-
-
-
-
+		
 
 		}
-	
+
 	}
 }

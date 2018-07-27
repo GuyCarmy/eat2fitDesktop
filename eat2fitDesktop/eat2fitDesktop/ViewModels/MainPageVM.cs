@@ -56,7 +56,6 @@ namespace eat2fitDesktop.ViewModels
 
 		public async void GetCustomers()
 		{
-			System.Diagnostics.Debug.WriteLine("got to get customers"); //todo delete
 			try
 			{
 				Customers = new ObservableCollection<Customer>(await mongoService.GetAllCustomers());

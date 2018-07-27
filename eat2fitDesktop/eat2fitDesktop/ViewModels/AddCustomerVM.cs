@@ -40,5 +40,3 @@ namespace eat2fitDesktop.ViewModels
 	}
 }
 
-//TODO: Add ViewModels to all pages and bind all
-//example: https://github.com/jamesmontemagno/TheXamarinShow/blob/master/2016-10-05%20Episode%205%20MVVM/ContactsApp/ContactsApp/ViewModels/AddContactViewModel.cs
