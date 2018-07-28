@@ -10,7 +10,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Password: "/>
-                <Entry Text="{Binding Password}" WidthRequest="500"/>
+                <Entry Text="{Binding Password}" WidthRequest="500" IsPassword="True"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Age: "/>
