@@ -98,6 +98,7 @@ namespace eat2fitDesktop.ViewModels
 			try
 			{
 				SuggestedDiet = new ObservableCollection<Meal>(selectedCustomer.SuggestedDiet);
+				EatedDiet = new ObservableCollection<Meal>(selectedCustomer.EatedDiet);
 			}
 			catch (Exception ex)
 			{
