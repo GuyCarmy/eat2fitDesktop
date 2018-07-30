@@ -36,7 +36,14 @@ namespace eat2fitDesktop.ViewModels
 
 		public string Hrs { get; set; }
 		public string Mins { get; set; }
-		public string Search { get; set; }
+		private string search;
+		public string Search { get => search;
+			set
+			{
+				search = value.ToLower();
+				UpdateFoodList();
+			}
+		}
 		public string  Amount { get; set; }
 		public object SelectedFood { get; set; }
 
@@ -128,7 +135,12 @@ namespace eat2fitDesktop.ViewModels
 			try
 			{
 				var foo = await mongoService.GetAllFoods();
+				if(Search != null)
+				{
+					foo = foo.FindAll(x => x.Name.Contains(Search));
+				}
 				Foods = new ObservableCollection<Food>(foo);
+
 			}
 			catch(Exception ex)
 			{
