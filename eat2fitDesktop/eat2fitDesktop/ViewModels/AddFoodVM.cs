@@ -19,7 +19,7 @@ namespace eat2fitDesktop.ViewModels
 			if (Name == null || Calories == null)
 			{
 				System.Diagnostics.Debug.WriteLine("name or cal not set");
-				//TODO: diplay alert: Please complete all fields
+				await Application.Current.MainPage.DisplayAlert("Missing Field", "Please Enter all Fields", "Ok");
 			}
 			else
 			{

@@ -78,7 +78,7 @@ namespace eat2fitDesktop.ViewModels
 			if (Hrs == null || Mins == null)
 			{
 				System.Diagnostics.Debug.WriteLine("hrs or mins was not inserted");
-				//TODO: diplay alert: Please insert time first
+				await Application.Current.MainPage.DisplayAlert("Missing Field", "Please Enter Time", "Ok");
 			}
 			else
 			{
@@ -103,14 +103,14 @@ namespace eat2fitDesktop.ViewModels
 		}
 
 		public Command OnAddFoodToMealClickedCommand { get; }
-		void OnAddFoodToMealClicked()
+		async void OnAddFoodToMealClicked()
 		{
 			int amount = 0;
 			Food food = null;
 			if (SelectedFood == null || Amount == null)
 			{
 				System.Diagnostics.Debug.WriteLine("food was not selected or amount was not inserted");
-				//TODO: diplay alert: Please select food first
+				await Application.Current.MainPage.DisplayAlert("Missing Field", "Please Select Food and Enter Amount", "Ok");
 			}
 			else
 			{
@@ -155,7 +155,6 @@ namespace eat2fitDesktop.ViewModels
 			OnNewFoodClickedCommand = new Command(OnNewFoodClicked);
 			OnCreateMealClickedCommand = new Command(OnCreateMealClicked);
 			OnAddFoodToMealClickedCommand = new Command(OnAddFoodToMealClicked);
-			UpdateFoodList();
 		}
 	}
 }

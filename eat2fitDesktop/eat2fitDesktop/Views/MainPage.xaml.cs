@@ -27,9 +27,6 @@ namespace eat2fitDesktop.Views
 		public MainPage()
 		{
 			InitializeComponent();
-			BindingContext = new MainPageVM();
-		
-
 		}
 
 	}

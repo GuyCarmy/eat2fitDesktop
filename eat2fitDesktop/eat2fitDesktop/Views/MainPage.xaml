@@ -7,11 +7,14 @@
     <ContentPage.Content>
         <StackLayout Spacing="30" Padding="30">
             <StackLayout Orientation="Horizontal" >
-                <Label Text="Customer" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Change Customer: " HorizontalOptions="StartAndExpand"/>
                 <Picker SelectedItem="{Binding SelectedCustomer}" ItemsSource="{Binding Customers}" WidthRequest="800"/>
                 <Button Text="New Customer" Command="{Binding OnNewCustomerClickedCommand}"/>
             </StackLayout>
-
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Selected Customer: "/>
+                <Label Text="{Binding SelectedCustomerString}" Style="{DynamicResource TitleStyle}"/>
+            </StackLayout>
             <Grid Padding="20" RowSpacing="20" ColumnSpacing="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>

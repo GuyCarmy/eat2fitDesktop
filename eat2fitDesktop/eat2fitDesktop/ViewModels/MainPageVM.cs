@@ -13,9 +13,9 @@ namespace eat2fitDesktop.ViewModels
 {
     public class MainPageVM : INotifyPropertyChanged
 	{
-		//todo: bug- if you add meal for a customer, when it goes back to the main page it unset the selected customer. also, if customer is not selected, make sure view lists are cleared.
+		//todo: bug- if you add meal for a customer, when it goes back to the main page the customer doesnt show.
 		private Customer selectedCustomer;
-		public object SelectedCustomer
+		public Customer SelectedCustomer
 		{
 			get
 			{
@@ -30,11 +30,16 @@ namespace eat2fitDesktop.ViewModels
 				}
 				else
 				{
-					System.Diagnostics.Debug.Write("value is not Customer, it is: "); //todo raise exception
+
+					System.Diagnostics.Debug.WriteLine("value is not Customer");
+					//raise exception
+
 				}
+				OnPropertyChanged();
 			}
 		}
 
+		public string SelectedCustomerString { get; set; }
 		MongoService mongoService = new MongoService();
 		private ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
 		public ObservableCollection<Customer> Customers
@@ -90,13 +95,11 @@ namespace eat2fitDesktop.ViewModels
 
 		void CustomerChanged()
 		{
-			System.Diagnostics.Debug.WriteLine("customer changed"); //todo delete
-			/*List<Meal> test = new List<Meal>();
-			test.Add(new Meal() { Time = 50 });
-			test.Add(new Meal() { Time = 70 });
-			SuggestedDiet = new ObservableCollection<Meal>(test);*/
+			System.Diagnostics.Debug.WriteLine("customer changed to: " + selectedCustomer); 
 			try
 			{
+				SelectedCustomerString = SelectedCustomer.Name +", "+ SelectedCustomer.Details; //todo change the style (in xaml) to something more fit
+				OnPropertyChanged("SelectedCustomerString");
 				SuggestedDiet = new ObservableCollection<Meal>(selectedCustomer.SuggestedDiet);
 				EatedDiet = new ObservableCollection<Meal>(selectedCustomer.EatedDiet);
 			}
@@ -104,16 +107,13 @@ namespace eat2fitDesktop.ViewModels
 			{
 				System.Diagnostics.Debug.WriteLine(ex.Message);
 			}
-			foreach(Meal m in SuggestedDiet)
-			{
-				System.Diagnostics.Debug.WriteLine("m is " + m.Details);
-			}
 		}
 
 		public Command OnNewCustomerClickedCommand { get; }
 		async void OnNewCustomerClicked()
 		{
-			System.Diagnostics.Debug.WriteLine("new customer was clicked"); //todo delete
+			System.Diagnostics.Debug.WriteLine("selected customer is: " + SelectedCustomer);
+			System.Diagnostics.Debug.WriteLine("new customer was clicked");
  			await Application.Current.MainPage.Navigation.PushAsync(new AddCustomerPage());
 		}
 
@@ -132,13 +132,14 @@ namespace eat2fitDesktop.ViewModels
 				await Application.Current.MainPage.Navigation.PushAsync(addMealPage);
 			}
 			else
+			{
 				System.Diagnostics.Debug.WriteLine("didnt selecet customer");
-				//todo await DisplayAlert("No Customer", "Please select a customer first", "OK");
+				await Application.Current.MainPage.DisplayAlert("Missing Field", "Please Select Customer First", "Ok");
+			}
 		}
 
 		public MainPageVM()
 		{
-			System.Diagnostics.Debug.WriteLine("main page view model created"); //todo delete
 			OnAddMealClickedCommand = new Command(OnAddMealClicked);
 			OnNewCustomerClickedCommand = new Command(OnNewCustomerClicked);
 		}

@@ -2,6 +2,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using eat2fitDesktop.Views;
+using eat2fitDesktop.ViewModels;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eat2fitDesktop
@@ -11,8 +12,10 @@ namespace eat2fitDesktop
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new NavigationPage(new MainPage());
+			var p = new MainPage();
+			var vm = new MainPageVM();
+			p.BindingContext = vm;
+			MainPage = new NavigationPage(p);
 		}
 
 		protected override void OnStart ()
