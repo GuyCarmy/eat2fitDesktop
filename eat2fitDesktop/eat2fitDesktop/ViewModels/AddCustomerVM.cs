@@ -21,19 +21,27 @@ namespace eat2fitDesktop.ViewModels
 		public Command OnAddCustomerClickedCommand { get; }
 		async void OnAddCustomerClicked()
 		{
-			customer.Name = Name;
-			customer.Password = Password;
-			try
+			if (Name == null || Password == null || Age == null)
 			{
-				customer.Age = Convert.ToInt32(Age);
+				System.Diagnostics.Debug.WriteLine("name, pass or age not set");
+				await Application.Current.MainPage.DisplayAlert("Missing Field", "Please Enter all Fields", "Ok");
 			}
-			catch (Exception ex)
+			else
 			{
-				System.Diagnostics.Debug.WriteLine(ex.Message);
+				customer.Name = Name;
+				customer.Password = Password;
+				try
+				{
+					customer.Age = Convert.ToInt32(Age);
+				}
+				catch (Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine(ex.Message);
+				}
+				var mongoService = new MongoService();
+				await mongoService.CreateCustomer(customer);
+				await Application.Current.MainPage.Navigation.PopAsync();
 			}
-			var mongoService = new MongoService();
-			await mongoService.CreateCustomer(customer);
-			await Application.Current.MainPage.Navigation.PopAsync();
 		}
 
 		public AddCustomerVM()
