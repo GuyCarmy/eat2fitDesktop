@@ -2,7 +2,7 @@ My final project in c# for object oriented programming project course.
 Course #20586 of the open university of Israel.
 
 Its a program for dietitions to manage the diets for their clients.
-The project is wrttien using xamarin, and using CosomosDB with MongoDB API.
+The project is wrttien using xamarin, and using MongoDB.
 The project is based on MVVM design pattern.
 The Models: Customer, Meal, Food.
 a meal holds a list of foods and time.
