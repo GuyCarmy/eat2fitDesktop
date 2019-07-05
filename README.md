@@ -12,4 +12,6 @@ and the second inserted by the customer himself, what he actually ate).
 The Views for the desktop app are: main. add customer. add food. add meal.
 
 
-This is the dietition desktop app. the client will have an android app.
+This is the dietition desktop app. the client have an android app in other repo.
+
+More info can be found in this [repo](https://github.com/GuyCarmy/eat2fit)
